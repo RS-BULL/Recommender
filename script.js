@@ -2,21 +2,25 @@ const backendUrl = "https://recommender-vphd.onrender.com";  // Replace with act
 let allVideos = [];
 let displayedCount = 0;
 
-// Fetch videos from backend
 async function fetchVideos(query) {
-    document.getElementById("results").innerHTML = `<p>Loading...</p>`;
-    
     try {
-        const response = await fetch(`${backendUrl}/search?q=${encodeURIComponent(query)}`);
-        const videos = await response.json();
-        allVideos = videos.filter(v => v.title && v.videoId);  // Remove bad data
-        displayedCount = 0;
-        displayVideos();
+        const response = await fetch(`https://recommender-vphd.onrender.com/search?q=${query}`);
+        const data = await response.json();
+        
+        console.log("API Response:", data);  // ✅ Debugging step
+
+        if (!Array.isArray(data.videos)) {
+            throw new Error("Invalid data format: videos is not an array");
+        }
+
+        const filteredVideos = data.videos.filter(video => video.likes > 100);
+        console.log("Filtered Videos:", filteredVideos);
+
     } catch (error) {
-        document.getElementById("results").innerHTML = `<p>Error fetching videos.</p>`;
         console.error("Error:", error);
     }
 }
+
 
 // Display videos (2 at a time)
 function displayVideos() {
