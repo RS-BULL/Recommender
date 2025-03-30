@@ -1,4 +1,4 @@
-const backendUrl = "https://your-app.onrender.com";  // Replace with actual backend URL
+const backendUrl = "https://recommender-vphd.onrender.com";  // Replace with actual backend URL
 let allVideos = [];
 let displayedCount = 0;
 
