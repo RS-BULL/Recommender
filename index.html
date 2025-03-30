@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Video Finder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Smart Video Finder 🔍</h1>
+        
+        <div class="search-box">
+            <input type="text" id="searchQuery" placeholder="Search for the best videos..." autocomplete="off">
+            <button id="searchBtn">Search</button>
+        </div>
+
+        <div class="filters">
+            <select id="filterDuration">
+                <option value="" selected disabled>Filter by Duration</option>
+                <option value="short">Less than 10 min</option>
+                <option value="long">More than 10 min</option>
+            </select>
+        </div>
+
+        <div id="results">
+            <!-- Videos will be loaded here -->
+        </div>
+
+        <button id="loadMoreBtn" class="hidden">Load More</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
